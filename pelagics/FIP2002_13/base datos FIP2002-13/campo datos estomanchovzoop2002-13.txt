@@ -1,0 +1,30 @@
+Columnas		Variable		Unidades
+
+1		     Nº Muestra		
+2		     Lance		
+3		     Hora		        hora
+4		     Minutos		        minutos
+5		     Lat Grad		        grados
+6		     Lat Min		        minutos
+7		     Long Grad		        grados
+8		     Long Min		        minutos
+9		     Zona		
+10		     Long Total		        centimetros
+11		     Peso Total		        gramos
+12		     Peso Estom		        gramos
+13		     Est. Estom		        Estado Estómagos (Lleno=1, Semi lleno= 2, Semi vacío= 3 y Vacío= 4)
+14		     Est. Dig		        Estado Digestión (Completo=a, Semi digerido= b, Casi digerido= c y Digerido= d)
+15		     Peso Zoop		        Peso Zooplancton (gramos)
+16		     Anfipodo	 	        N° individuos por estomago
+17		     Copepodos		        N° individuos por estomago
+18		     Eufausidos		        N° individuos por estomago
+19		     Huevos de invertebrados    N° individuos por estomago
+20		     Huevos de Peces		N° individuos por estomago
+21		Larvas de Peces		N° individuos por estomago
+22		Larvas de cirripedios		N° individuos por estomago
+23		Larva de Gastropodo		N° individuos por estomago
+24		Mysidaceos		N° individuos por estomago
+25		Nauplyus		N° individuos por estomago
+26		Zoeas		N° individuos por estomago
+27		Restos de Crustaceos		N° individuos por estomago
+28		Total Presas		N° de Organismos contabilizados por estomago

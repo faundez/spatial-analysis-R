@@ -1,0 +1,36 @@
+Columnas	Variable	Unidades											
+1	       Nº Muestra												
+2	       Lance												
+3	       Hora	        horas											
+4	       Minutos	        minutos											
+5	       Lat Grad	        grados											
+6	       Lat Min	        minutos											
+7	       Long Grad	grados											
+8	       Long Min	        minutos											
+9	       Zona												
+10	       Long Total	centimetros											
+11	       Peso Total	gramos											
+12	       Peso Estom	gramos											
+13	       Est. Estom	Estado	Estómagos	"(Lleno=1,"	Semi	lleno=	"2,"	Semi	vacío=	3	y	Vacío=	4)
+14	       Est. Dig	Estado	Digestión	"(Completo=a,"	Semi	digerido=	"b,"	Casi	digerido=	c	y	Digerido=	d)
+15	       Biddulphia	celulas/ml											
+16	       Cocconeis	celulas/ml
+17	       Coscinodiscus	celulas/ml
+18	       Corethron	celulas/ml
+19	       Chaetoceros	celulas/ml
+20	       Diploneis	celulas/ml
+21	       Eucampia	        celulas/ml
+22	       Leptocylindrus	celulas/ml
+23	       Melosira	        celulas/ml
+24	       Navicula	        celulas/ml
+25	       Nitzschia	celulas/ml
+26	       Rhizosolenia	celulas/ml
+27	       Skeletonema	celulas/ml
+28	       Stephanophyxis	celulas/ml
+29	       Thalassiothrix	celulas/ml
+30	       Thalasiosira	celulas/ml
+31	       Protoperidinium	celulas/ml
+32	       Ceriatum	        celulas/ml
+33	       Rhabdonema	celulas/ml
+34	       Schroderella	celulas/ml
+35	       Stauroneis	celulas/ml

@@ -1,0 +1,29 @@
+Columnas		Variables		Unidades
+1		      Estación		      N° Estación
+2		      Lat Grad		      grados
+3		      Lat Min		      minutos
+4		      Long Grad		      grados
+5		      Long Min		      minutos
+6		      Año		
+7		      Mes		
+8		      Día		
+9		      Hora		      hora
+10		      Minutos		      minutos
+11		      Skeletonema	      10^8celulas por m3	
+12		      Chaetoceros	      10^8celulas por m3	
+13		      Thalassiosira	      10^8celulas por m3	
+14		      Nitzschia		      10^8celulas por m3
+15		      Asterionella            10^8celulas por m3		
+16		      Thalassiothrix          10^8celulas por m3		
+17                    Rhizosolenia            10^8celulas por m3				
+18		      Eucampia		      10^8celulas por m3
+19		      Corethron		      10^8celulas por m3
+20		      Biddulphia	      10^8celulas por m3	
+21		      Coscinossira	      10^8celulas por m3	
+22		      Schroderella	      10^8celulas por m3	
+23		      Coscinodiscus	      10^8celulas por m3 	
+24		      Leptocylindrus	      10^8celulas por m3	
+25		      Ditylum		      10^8celulas por m3
+26		      Melosira	              10^8celulas por m3	
+27		      Ceratium		      10^8celulas por m3 
+28		      Protoperidinium	      10^8celulas por m3 	

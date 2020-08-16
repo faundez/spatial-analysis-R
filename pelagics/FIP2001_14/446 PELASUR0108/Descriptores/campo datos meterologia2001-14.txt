@@ -1,0 +1,16 @@
+COLUMNA	INFORMACION	UNIDADES
+1	N° CRUCERO	
+2	LATITUD	        grados
+3	MIN LATITUD	minutos
+4	LONGITUD	grados
+5	MIN LONGUITUD	minutos
+6	AÑO	        año
+7	MES	        mes
+8	DIA	        dia
+9	HORA 	        hora
+10	MINUTO	        minutos
+11	DIR VIENTO	grados
+12	NUDOS VIENTO	nudos
+13	PRESION BAROMETRICA	milibar
+14	T° BULBO SECO	°C
+15      CANTIDAD NUBES  formato NODC

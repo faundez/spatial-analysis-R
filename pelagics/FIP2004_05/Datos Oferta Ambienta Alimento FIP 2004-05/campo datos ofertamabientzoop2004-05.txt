@@ -1,0 +1,72 @@
+Columnas        Variables                    Unidades
+1		Estación		     N° estación
+2		Lat Grad		     grados
+3		Lat Min		             minutos
+4		Long Grad		     grados
+5		Long Min		     minutos
+6		Año		
+7		Mes		
+8		Día		
+9		Hora		             hora
+10		Minutos		             minutos
+11		Copépodos		     N° individuos por m3
+12		Copepoditos		     N° individuos por m3
+13		Acartia tonsa		     N° individuos por m3
+14		Aetidaeus armatus	     N° individuos por m3
+15		Calanoides patagoniensis     N° individuos por m3	
+16		Calanus chilensis	     N° individuos por m3
+17		Candacia sp		     N° individuos por m3
+18		Centropages brachiatus	     N° individuos por m3	
+19		Clausocalanus sp	     N° individuos por m3
+20		Corycaeus sp		     N° individuos por m3
+21		Eucalanus sp		     N° individuos por m3
+22		Eucalanus inermis	     N° individuos por m3
+23		Harpacticoidea		     N° individuos por m3
+24		Heterorhabdus spinifrons     N° individuos por m3	
+25		Lucicutia sp		     N° individuos por m3
+26		Metridia sp		     N° individuos por m3
+27		Nannocalanus sp		     N° individuos por m3
+28		Oithona sp		     N° individuos por m3
+29		Oncaea sp		     N° individuos por m3
+30		Paracalanus parvus	     N° individuos por m3	
+31		Paraeuchaeta sp		     N° individuos por m3
+32		Pleuromamma gracilis	     N° individuos por m3	
+33		Pleuromamma xiphias	     N° individuos por m3	
+34		Rhincalanus nasutus	     N° individuos por m3	
+35		Anfípodos		     N° individuos por m3
+36		Apendicularias		     N° individuos por m3
+37		Cephalopoda (juveniles)	     N° individuos por m3	
+38		Cladóceros		     N° individuos por m3
+39		Ctenóforos		     N° individuos por m3
+40		Doliólidos	             N° individuos por m3	
+41		Eufáusidos		     N° individuos por m3
+42		Foraminíferos		     N° individuos por m3
+43		Miscidaceos		     N° individuos por m3
+44		Medusas		             N° individuos por m3
+45		Mictófidos		     N° individuos por m3
+46		Nauplius		     N° individuos por m3
+47		Pleuroncodes monodon (juv)   N° individuos por m3
+48		Quetognatos		     N° individuos por m3
+49		Ophiuroideos (juv)           N° individuos por m3
+50		Ostrácodos		     N° individuos por m3
+51		Radiolarios		     N° individuos por m3
+52		Sifonóforos		     N° individuos por m3
+53		Stomatópodos		     N° individuos por m3
+54		Tomoptéridos		     N° individuos por m3
+55		Calyptopis		     N° individuos por m3
+56		Furcilia		     N° individuos por m3
+57		Huevos de peces		     N° individuos por m3
+58		Huevos de invertebrados	     N° individuos por m3	
+59		Larva Cifonauta		     N° individuos por m3
+60		Larva Cipris		     N° individuos por m3
+61		Larva Criptoniscus	     N° individuos por m3	
+62		Larvas de bivalvos	     N° individuos por m3	
+63		Larva equinopluteus	     N° individuos por m3	
+64		Larvas de gastrópodos	     N° individuos por m3	
+65		Larva Ophiopluteus	     N° individuos por m3	
+66		Larvas de peces		     N° individuos por m3
+67		Larvas de poliquetos	     N° individuos por m3	
+68		Larva trocófora		     N° individuos por m3
+69		Larva de Discinisca laevis   N° individuos por m3	
+70		Megalopas		     N° individuos por m3
+71		Zoeas		             N° individuos por m3

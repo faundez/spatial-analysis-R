@@ -1,0 +1,45 @@
+Columnas		Variables		Unidades
+1		      Estación		      N° Estación
+2		      Fecha		      día/mes/año
+3		      Hora		      hora
+4		      Minutos		      minutos
+5		      Lat Grad		      grados
+6		      Lat Min		      minutos
+7		      Long Grad		      grados
+8		      Long Min		      minutos
+9		      Zona		
+10		      Biddulphia	      celulas/m3
+11		      Cocconeis		      celulas/m3
+12		      Coscinodiscus	      celulas/m3
+13		      Cymbella		      celulas/m3
+14		      Chaetoceros	      celulas/m3
+15		      Entopyla		      celulas/m3
+16		      Epithemia		      celulas/m3
+17		      Ditylum		      celulas/m3
+18		      Gomphonema	      celulas/m3
+19		      Grammatophora	      celulas/m3
+20		      Leptocylindrus          celulas/m3
+21		      Lichmophora             celulas/m3
+22		Navicula		celulas/m3
+23		Nitzschia		celulas/m3
+24		Pseudonitzschia		celulas/m3
+25		Rhabdonema		celulas/m3
+26		Rhizosolenia		celulas/m3
+27		Skeletonema		celulas/m3
+28		Schroderella		celulas/m3
+29		Stephanopyxis		celulas/m3
+30		Synedra		celulas/m3
+31		Thalassiothrix		celulas/m3
+32		Thalassiosira		celulas/m3
+33		Asterionella		celulas/m3
+34		Corethron		celulas/m3
+35		Coscinosira		celulas/m3
+36		Thalassionema		celulas/m3
+37		Planktoniella		celulas/m3
+38		coscinosira		celulas/m3
+39		Cerataulina		celulas/m3
+40		Melosira		celulas/m3
+41		Peridinium		celulas/m3
+42		Protoperidinium		celulas/m3
+43		Ceriatum		celulas/m3
+44		Dinophysis		celulas/m3

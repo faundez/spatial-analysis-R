@@ -1,0 +1,17 @@
+Columna   Tipo   Longitud  Decimales  Descripcion
+   1    Numérico    3          0      Número de la UBM
+   2    Numérico    8          0      Fecha (AAAAMMDD)
+   3    Numérico    8          0      Hora (HHMMSSss)
+   4    Numérico    7          2      Latitud (GGMM.mm)
+   5    Caracter    1                 N = Norte      S = sur
+   6    Numérico    8          2      Longitud (GGGMM.mm)
+   7    Caracter    3                 E = Este       W = West
+
+
+A :  Año
+M :  Mes /Minuto
+D :  Día
+G :  Grados de Latitud / Longitud
+S :  Segundo
+m :  décimas de minuto
+s :  décimas de segundo

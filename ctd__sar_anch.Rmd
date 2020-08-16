@@ -1,0 +1,570 @@
+---
+title: "Anchovy_Sardine"
+author: "Patricia Faundez"
+date: "July 7, 2020"
+output: pdf_document
+---
+
+
+```{r  eval=FALSE echo=FALSE}
+
+library(foreign)
+library(readr)
+library(readxl)
+library(dplyr)
+
+#FIP2001_14
+
+#2001_months_8_9 
+
+o_2001 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2001_14/446 PELASUR0108/oceanografia2001-14.dbf', as.is = FALSE)
+
+m_2001 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2001_14/446 PELASUR0108/meteorologia2001-14.dbf', as.is = FALSE)
+```
+
+```{r  eval=FALSE echo=FALSE}
+#FIP2001_13 COLUMNA	INFORMACION	UNIDADES
+# 1	LATITUD 	grados
+# 2	MIN LATITUD	minutos
+# 3	LONGITUD	grados
+# 6	PROFUNDIDAD	metros
+# 7	TEMPERATURA	°C# 4	MIN LONGUITUD	minutos
+# 5	ESTACION	
+
+# 8	SALINIDAD 	psu
+# 9	OXIGENO 	ml/l
+# 10	DENSIDAD	sigma-t
+# 11	CLOROFILA-a	mg/m3
+
+o_2002_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2001_13/oceanografia2001-13.dbf', as.is = FALSE)
+  
+lat_37 <- o_2002_1 %>% 
+  filter(COLUMNA_1==37, COLUMNA_2==0)
+  
+  
+lat_35_36 <- o_2002_1 %>%
+  filter(COLUMNA_1 > 34) %>% 
+   filter(COLUMNA_1 < 37) 
+ 
+lat_35_37 <- bind_rows(lat_35_36, lat_37)
+
+  o_2002 <- lat_35_37 %>%
+    rename(lat=COLUMNA_1, latM=COLUMNA_2, lon=COLUMNA_3, lonM=COLUMNA_4, z=COLUMNA_6, t=COLUMNA_7, s=COLUMNA_8, o=COLUMNA_9, d=COLUMNA_10, c=COLUMNA_11) %>%
+  select(lat, lon, z, t, s, o, d, c) 
+
+o_2002$y <- rep(2002, 6416)
+   
+m_2002_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2001_13/meteorologia2001-13.dbf', as.is = FALSE)
+
+```
+
+
+
+
+
+```{r}
+
+# 2003_1
+
+o_2003_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2002_13/base datos FIP2002-13/oceanografia2002-13.dbf', as.is = FALSE) 
+
+lat_37_2003 <- o_2003_1 %>% 
+  filter(COLUMNA_1==37, COLUMNA_2==0)
+  
+lat_35_36_2003 <- o_2003_1 %>%
+  filter(COLUMNA_1 > 34) %>% 
+   filter(COLUMNA_1 < 37) 
+ 
+lat_35_37_2003 <- bind_rows(lat_35_36_2003, lat_37_2003)
+
+  o_2003 <- lat_35_37_2003 %>%
+    rename(lat=COLUMNA_1, latM=COLUMNA_2, lon=COLUMNA_3, lonM=COLUMNA_4, z=COLUMNA_6, t=COLUMNA_7, s=COLUMNA_8, o=COLUMNA_10, d=COLUMNA_9, c=COLUMNA_11) %>%
+  select(lat, lon, z, t, s, o, d, c) 
+
+o_2003$y <- rep(2003, 6214)
+
+m_2003_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2002_13/base datos FIP2002-13/meteorologia2002-13.dbf', as.is = FALSE)
+
+# f_2003_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2002_13/base datos FIP2002-13/ofertambienfito2002-13.dbf', as.is = FALSE)
+# 
+# z_2003_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2002_13/base datos FIP2002-13/ofertambienzoop2002-13.dbf', as.is = FALSE)
+# 
+# estomanchofito_2003_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2002_13/base datos FIP2002-13/estomanchofito2002-13.dbf', as.is = FALSE)
+# 
+# estomanchozoop_2003_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2002_13/base datos FIP2002-13/estomanchozoop2002-13.dbf', as.is = FALSE)
+# 
+# estomsardinfito_2003_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2002_13/base datos FIP2002-13/estomsardinfito2002-13.dbf', as.is = FALSE) 
+# 
+# estomsardinzoop_2003_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2002_13/base datos FIP2002-13/estomsardinzoop2002-13.dbf', as.is = FALSE)
+
+
+```
+
+```{r}
+
+#2005_1, COLUMNA	INFORMACION	UNIDADES
+# 1	LATITUD 	grados
+# 2	MIN LATITUD	minutos
+# 3	LONGITUD	grados
+# 4	MIN LONGUITUD	minutos
+# 5	ESTACION	
+# 6	AÑO
+# 7	MES
+# 8	DIA
+# 9	HORA		horas
+# 10	MINUTOS		minutos
+# 11	PROFUNDIDAD	metros
+# 12	TEMPERATURA	°C
+# 13	SALINIDAD 	psu
+# 14 	DENSIDAD	sigma-t
+# 15	OXIGENO 	ml/l
+# 16	CLOROFILA-a	mg/m3
+
+o_2005_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2004_05/Datos Oceanografia FIP 2004-05/base oceanografia2004-05.dbf', as.is = FALSE)
+
+lat_37_2005 <- o_2005_1 %>% 
+  filter(COLUMNA_1==37, COLUMNA_2==0)
+  
+lat_35_36_2005 <- o_2005_1 %>%
+  filter(COLUMNA_1 > 34) %>% 
+   filter(COLUMNA_1 < 37) 
+ 
+lat_35_37_2005 <- bind_rows(lat_35_36_2005, lat_37_2005)
+
+  o_2005 <- lat_35_37_2005 %>%
+    rename(lat=COLUMNA_1, latM=COLUMNA_2, lon=COLUMNA_3, lonM=COLUMNA_4, z=COLUMNA_11, t=COLUMNA_12, s=COLUMNA_13, d=COLUMNA_14, o=COLUMNA_15, c=COLUMNA_16) %>% 
+    select(lat, lon, z, t, s, o, d, c)%>%
+    mutate(c = as.character(c)) %>% 
+    mutate(c= as.numeric(c))# do not work didn't keep the decimals
+
+o_2005$y <- rep(2005, 7005)
+
+m_2005_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2004_05/Datos Meteorologia FIP 2004-05/base meteorologia2004-05.dbf', as.is = FALSE)
+
+# f_2005_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2004_05/Datos Oferta Ambienta Alimento FIP 2004-05/base_datos_oferta_ambiental_fitoplancton2004-05.dbf', as.is = FALSE)
+# 
+# z_2005_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/FIP2004_05/Datos Oferta Ambienta Alimento FIP 2004-05/base_datos_oferta_ambiental_zooplancton2004-05.dbf', as.is = FALSE)
+```
+
+```{r}
+
+#2008_1
+
+o_2008_1 <- read.csv('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2008/OCEANOGRAFIA/ocean.csv', stringsAsFactors = F)
+
+o_2008 <- o_2008_1 %>% 
+  rename(lat1=ï..LATITUD, lon=LONGITUD, y=ANO, z=PROFUNDIDAD, t=TEMPERATURA, s=SALINIDAD, d=DENSIDAD, o=OXIGENO, c=CLOROFILA) %>% 
+   select(lat1, lon, z, t, s, o, d, c) %>% 
+   filter(lat1 > -37.33333) %>% 
+   filter(lat1 < -34.66667) %>% #CHECK THE SOUTH STUDY AREA LIMIT AROUND 37.20 S ??????????????MAX
+   mutate(lat=lat1*-1) %>% 
+   mutate(lat=as.integer(lat)) %>% 
+   select(lat, lon, z, t, s, o, d, c)
+  
+o_2008$y <- rep(2008, 5217)
+
+# f_2008_1 <- read.csv('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2008/OFERTA AMBIENTAL DE ALIMENTO/fito_2008.csv', stringsAsFactors = F)
+# 
+# z_2008_1 <- read.csv('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2008/OFERTA AMBIENTAL DE ALIMENTO/zoo_2008.csv', stringsAsFactors = F)
+
+```
+
+
+
+```{r}
+#C:\Users\patri\Box Sync\Spring_2016\spatial-analysis-R\pelagics\2011_1\Descriptores
+#2011_1
+# prof				profundidad del dato		metros
+# 	Temp	. 			temperatura del agua		°C
+# 	Sali				salinidad del agua		psu
+# 	Sigmat				densidad del agua		sigma-t (kg/m3)
+# 	Oxigsen			oxígeno disuelto de sensor	mL/L
+# 	Cloa sensor			Clorofila sensor		             µg/L
+#  	Cloa				Clorofila-a discreta		µg/L
+# 	Feop				feopigmentos discreto		µg/L
+
+
+o_2011_1 <- read.csv('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2011_1/cruce536.csv', as.is = FALSE) 
+
+lat_37_2011 <- o_2011_1 %>% 
+  filter(lat.g.==37, lat.m.==0)
+  
+lat_35_36_2011 <- o_2011_1 %>%
+  filter(lat.g. > 34) %>% 
+   filter(lat.g. < 37) 
+ 
+lat_35_37_2011 <- bind_rows(lat_35_36_2011, lat_37_2011)
+
+  o_2011 <- lat_35_37_2011 %>%
+    rename(lat=lat.g., latM=lat.m., lon=long..g., lonM=long.m., z=prof, t=Temp, s=Sali, d=sigmat, o=oxigsen, c=cloa) %>% 
+select(lat, lon, z, t, s, o, d, c)
+
+o_2011$y <- rep(2011, 1302)
+
+# f_2011_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2011_1/BASE fitoplancton Oferta Alimento FIP2010-04.dbf', as.is = FALSE)
+# 
+# z_2011_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2011_1/BASE zooplancton Oferta Alimento FIP2010-04.dbf', as.is = FALSE)
+```
+
+
+```{r}
+#C:\Users\patri\Box Sync\Spring_2016\spatial-analysis-R\pelagics\2011_2\Descriptores
+#2011_2 data for lat north than 33 S
+```
+
+
+
+```{r}
+
+#C:\Users\patri\Box Sync\Spring_2016\spatial-analysis-R\pelagics\
+#2012_1
+
+o_2013_1 <- read.csv('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2012_1/Oceanografia/Oceanografia2013.csv', stringsAsFactors = F) 
+
+lat_37_2013 <- o_2013_1 %>% 
+  filter(lat.g.==37, lat.m.==0)
+  
+lat_35_36_2013 <- o_2013_1 %>%
+  filter(lat.g. > 34) %>% 
+   filter(lat.g. < 37) 
+ 
+lat_35_37_2013 <- bind_rows(lat_35_36_2013, lat_37_2013)
+
+  o_2013 <- lat_35_37_2013 %>%
+    rename(lat=lat.g., latM=lat.m., lon=long..g., lonM=long..m., z=profundidad, t=temp, s=salinidad..psu., d=sigma, o=oxigsensor, c=cloa)%>% 
+select(lat, lon, z, t, s, o, d, c)
+
+o_2013$y <- rep(2013, 1150)
+
+# ofertambienfito_2013_1 <- read.csv('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2012_1/Oferta ambiental/FITOPLANCTON2013.csv', stringsAsFactors = F)
+# 
+# ofertambienzoop_2013_1 <- read.csv('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2012_1/Oferta ambiental/ZOOPLANCTON2013.csv', stringsAsFactors = F)
+```
+
+
+```{r}
+#2014
+
+o_2014_1 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2014/Base datos dbf/OCEANOGR.dbf', as.is = FALSE)
+
+lat_37_2014 <- o_2014_1 %>% 
+  filter(LAT==37, MIN_LAT==0)
+  
+lat_35_36_2014 <- o_2014_1 %>%
+  filter(LAT > 34) %>% 
+   filter(LAT < 37) 
+ 
+lat_35_37_2014 <- bind_rows(lat_35_36_2014, lat_37_2014)
+
+o_2014 <- lat_35_37_2014 %>%
+     rename(lat=LAT, latM=MIN_LAT, lon=LON, lonM=MIN_LON, z=PROF_DATO, t=T_MAR, s=SAL, d=SIGMAT, o=O_SENSOR, c=CLOA) %>%
+  select(lat, lon, z, t, s, o, d, c)%>% 
+    mutate(c=as.character(c)) %>% 
+    mutate(c=as.numeric(gsub(",", ".", c))) 
+    
+o_2014$y <- rep(2014, 1192)
+
+# ofertambienfito_2014 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2014/Base datos dbf/FITOPLAN.dbf', as.is = FALSE)
+# 
+# ofertambienzoop_2014 <- read.dbf('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2014/Base datos dbf/ZOOPLANC.dbf', as.is = FALSE)
+```
+
+```{r}
+#2016_1
+o_2016_1 <- read.csv('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2016_centrosur/OCEANOGR2016.csv', stringsAsFactors = F)
+
+lat_37_2016 <- o_2016_1 %>% 
+  filter(lat..S.==37, min.lat==0)
+  
+lat_35_36_2016 <- o_2016_1 %>%
+  filter(lat..S. > 34) %>% 
+   filter(lat..S. < 37) 
+ 
+lat_35_37_2016 <- bind_rows(lat_35_36_2016, lat_37_2016)
+
+o_2016 <- lat_35_37_2016 %>%
+     rename(lat=lat..S., latM=min.lat, lon=long...W., lonM=min.long, z=profundidad..m., t=temp..øC., s=salinidad..psu., d=sigma.t, o=oxiw..mL.L., c=cloa..µg.L.) %>%
+  select(lat, lon, z, t, s, o, d, c)%>% 
+    mutate(c=as.character(c)) %>% 
+    mutate(c=as.numeric(gsub(",", ".", c))) 
+
+o_2016$y <- rep(2016, 1281)
+
+
+```
+
+
+```{r}
+#2017_1
+o_2017_1 <- read.csv('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/2017/OCEANOGR.csv', stringsAsFactors = F)
+
+lat_37_2017 <- o_2017_1 %>% 
+  filter(lat==37, min_lat==0)
+  
+lat_35_36_2017 <- o_2017_1 %>%
+  filter(lat > 34) %>% 
+   filter(lat < 37) 
+ 
+lat_35_37_2017 <- bind_rows(lat_35_36_2017, lat_37_2017)
+
+o_2017 <- lat_35_37_2017 %>%
+      rename(lat=lat, latM=min_lat, lon=long, lonM=min_long, z=profundida, t=temp, s=salinidad, d=sigma_t, o=oxiw, c=cloa) %>%
+  select(lat, lon, z, t, s, o, d, c)
+
+o_2017$y <- rep(2017, 1626)
+
+```
+
+#Chla satellite micro 1997-2018
+
+```{r}
+#Chla month 1
+ 
+ #extracting satelite Chl-a data during the month ctd variables were surveyed
+ 
+ Chla <- read.csv(file="data_Chla/micro_35_37.csv")
+ 
+ Chla_micro_35_37_1997_1 <- Chla %>% 
+   filter(year == 1997, month == 1) 
+ 
+ Chla_micro_35_37_1998_1 <- Chla %>% 
+   filter(year == 1998, month == 1) 
+   
+  Chla_micro_35_37_1999_1 <- Chla %>% 
+   filter(year == 1999, month == 1) 
+  
+ Chla_micro_35_37_2000_1 <- Chla %>% 
+   filter(year == 2000, month == 1) 
+ 
+  Chla_micro_35_37_2001_1 <- Chla %>% 
+   filter(year == 2001, month == 1) 
+  
+   Chla_micro_35_37_2002_1 <- Chla %>% 
+   filter(year == 2002, month == 1) 
+   
+   Chla_micro_35_37_2003_1 <- Chla %>% 
+   filter(year == 2003, month == 1) 
+   
+    Chla_micro_35_37_2004_1 <- Chla %>% 
+   filter(year == 2004, month == 1) 
+    
+     Chla_micro_35_37_2005_1 <- Chla %>% 
+   filter(year == 2005, month == 1) 
+     
+      Chla_micro_35_37_2006_1 <- Chla %>% 
+   filter(year == 2006, month == 1) 
+      
+       Chla_micro_35_37_2007_1 <- Chla %>% 
+   filter(year == 2007, month == 1) 
+       
+        Chla_micro_35_37_2008_1 <- Chla %>% 
+   filter(year == 2008, month == 1) 
+        
+         Chla_micro_35_37_2009_1 <- Chla %>% 
+   filter(year == 2009, month == 1) 
+         
+          Chla_micro_35_37_2010_1 <- Chla %>% 
+   filter(year == 2010, month == 1)
+          
+           Chla_micro_35_37_2011_1 <- Chla %>% 
+   filter(year == 2011, month == 1) 
+           
+            Chla_micro_35_37_2012_1 <- Chla %>% 
+   filter(year == 2012, month == 1) 
+            
+             Chla_micro_35_37_2013_1 <- Chla %>% 
+   filter(year == 2013, month == 1) 
+             
+              Chla_micro_35_37_2014_1 <- Chla %>% 
+   filter(year == 2014, month == 1)
+              
+               Chla_micro_35_37_2015_1 <- Chla %>% 
+   filter(year == 2015, month == 1) 
+               
+                Chla_micro_35_37_2016_1 <- Chla %>% 
+   filter(year == 2016, month == 1) 
+                
+                 Chla_micro_35_37_2017_1 <- Chla %>% 
+   filter(year == 2017, month == 1) 
+                 
+                 Chla_micro_35_37_2018_1 <- Chla %>% 
+   filter(year == 2018, month == 1) 
+
+#Combining Chla datasets in two columns; year and Chla
+
+a <- bind_rows(Chla_micro_35_37_1997_1, Chla_micro_35_37_1998_1)
+b <- bind_rows(a, Chla_micro_35_37_1999_1)
+c <- bind_rows(b, Chla_micro_35_37_2000_1)
+d <- bind_rows(c, Chla_micro_35_37_2001_1)
+e <- bind_rows(d, Chla_micro_35_37_2002_1)
+f <- bind_rows(e, Chla_micro_35_37_2003_1) 
+g <- bind_rows(f, Chla_micro_35_37_2004_1)
+h <- bind_rows(g, Chla_micro_35_37_2005_1)
+i <- bind_rows(h, Chla_micro_35_37_2006_1)
+j <- bind_rows(i, Chla_micro_35_37_2007_1)
+k <- bind_rows(j, Chla_micro_35_37_2008_1)
+l <- bind_rows(k, Chla_micro_35_37_2009_1)
+m <- bind_rows(l, Chla_micro_35_37_2010_1)
+n <- bind_rows(m, Chla_micro_35_37_2011_1)
+o <- bind_rows(n, Chla_micro_35_37_2012_1)
+p <- bind_rows(o, Chla_micro_35_37_2013_1)
+q <- bind_rows(p, Chla_micro_35_37_2014_1)
+r <- bind_rows(q, Chla_micro_35_37_2015_1)
+s <- bind_rows(r, Chla_micro_35_37_2016_1)
+t <- bind_rows(s, Chla_micro_35_37_2017_1)
+month_1_Chla_micro_35_37 <- bind_rows(t, Chla_micro_35_37_2018_1) %>% 
+  rename(y=year) 
+
+ggplot(month_1_Chla_micro_35_37, aes(x=year)) +
+  geom_smooth(aes(y=Chla), method="loess", col="blue") 
+```
+
+```{r}
+#data_2001_2018
+
+data_2001_2018 <- read_xlsx('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/pelagics/data_2001-2018/Tablas Crucero-RECLAS_2001-2018.xlsx', sheet = 1)
+
+#hay mas datos en los siguientes archivos excel: Tablas_Caldera-Coquimbo_1999-2017 y Tablas_Centro-sur_1996-2018
+
+#C:\Users\patri\Box Sync\Spring_2016\spatial-analysis-R\pelagics\data_2001-2018
+
+#hay mas datos en los siguientes archivos excel: IGS y K Históricos 2001-2012  S.comú y Anchoveta
+
+#C:\Users\patri\Box Sync\Spring_2016\spatial-analysis-R\pelagics\data_IGS_2001-2012
+```
+
+
+
+
+#creating the final database Chla satelite + ctd 2002-2003-2005-2008-2011-2013-2014-2016-2017
+
+```{r}
+#Combining ctd January datasets with columns;lat, lon, z, t, s, o, d, c, y
+
+a <- bind_rows(o_2002, o_2003)
+b <- bind_rows(a, o_2005)
+c <- bind_rows(b, o_2008)
+d <- bind_rows(c, o_2011)
+e <- bind_rows(d, o_2013)
+f <- bind_rows(e, o_2014) 
+g <- bind_rows(f, o_2016)
+ctd_Jan <- bind_rows(g, o_2017)
+  
+  ctd_20m_J <- ctd_Jan %>% 
+   filter(z < 21) 
+  
+  #Combining datasets for plot ctd 0-20m and Chla satellite #write.csv(ctd20_Chla_J, file="pelagics/data_Chla/st.csv")
+
+st <- read.csv('C:/Users/patri/Box Sync/Spring_2016/spatial-analysis-R/data_Chla/St_binded.csv', as.is = FALSE) %>% 
+  rename(st=ï..st2)
+
+final_ctd20_Chla_J <- full_join(month_1_Chla_micro_35_37, st, by = 'st') %>% 
+  rename(lat=lat_integer, lon=lon_integer)
+
+ctd20_Chla_J <- full_join(final_ctd20_Chla_J , ctd_20m_J, by=c("y","lat"))
+  #filter(y==2008)#there is no cyd data en 2008, 2013
+```
+
+
+```{r}
+# St_ctd20_Chla_J <- full_join(month_1_Chla_micro_35_37, ctd_20m_J, by = "y") %>% 
+#   filter(y==2002)
+# 
+# test <- St_ctd20_Chla_J[, 5, drop=FALSE] %>% 
+#   arrange(st)
+```
+
+
+
+```{r}
+library(ggplot2)
+#correlations Chla and temperature (ctd) per latitude
+
+ggplot(data = ctd20_Chla_J,
+       mapping = aes(x = value, y = t)) + #value=Chla
+  geom_point(aes(color = lat)) +
+  facet_wrap( ~ y) +
+  labs(x = "Chla micro satellite", y = "t") +
+  theme_bw() +
+  theme(legend.title = element_blank())
+```
+
+```{r}
+library(ggplot2)
+#correlations Chla and temperature (ctd) per latitude
+
+ggplot(data = ctd20_Chla_J,
+       mapping = aes(x = value, y = s)) + #value=Chla
+  geom_point(aes(color = lat)) +
+  facet_wrap( ~ y) +
+  labs(x = "Chla micro satellite", y = "s") +
+  theme_bw() +
+  theme(legend.title = element_blank())
+```
+
+```{r}
+library(ggplot2)
+#correlations Chla and temperature (ctd) per latitude
+
+ggplot(data = ctd20_Chla_J,
+       mapping = aes(x = value, y = d)) + #value=Chla
+  geom_point(aes(color = lat)) +
+  facet_wrap( ~ y) +
+  labs(x = "Chla micro satellite", y = "d") +
+  theme_bw() +
+  theme(legend.title = element_blank())
+```
+
+```{r}
+library(ggplot2)
+#correlations Chla and temperature (ctd) per latitude
+
+ggplot(data = ctd20_Chla_J,
+       mapping = aes(x = value, y = o)) + #value=Chla
+  geom_point(aes(color = lat)) +
+  facet_wrap( ~ y) +
+  labs(x = "Chla micro satellite", y = "o") +
+  theme_bw() +
+  theme(legend.title = element_blank())
+```
+
+
+
+```{r}
+library(ggplot2)
+#correlations Chla and temperature (ctd) per latitude
+
+ggplot(data = ctd20_Chla_J,
+       mapping = aes(x = value, y = c)) + #value=Chla
+  geom_point(aes(color = lat)) +
+  facet_wrap( ~ y) +
+  labs(x = "Chla micro satellite", y = "Chla in situ") +
+  theme_bw() +
+  theme(legend.title = element_blank())
+```
+
+```{r}
+library(GGally)
+
+ctd20_Chla_J <- ctd20_Chla_J %>% 
+  select(value,lat, z, t, s, o, d, c,y)
+
+ggcorr(data = ctd20_Chla_J)
+
+ggcorr(data = ctd20_Chla_J,
+       method = c("pairwise.complete.obs", "pearson"),
+       label = TRUE, label_size = 4)
+```
+
+
+```{r}
+ctd20_Chla_J_2002 <- ctd20_Chla_J %>% 
+  select(value,lat, z, t, s, o, d, c,y) %>% 
+  filter(y==2002)
+
+ggcorr(data = ctd20_Chla_J_2002,
+       method = c("complete", "kendall"),
+       label = TRUE, label_size = 4)
+```
+
+

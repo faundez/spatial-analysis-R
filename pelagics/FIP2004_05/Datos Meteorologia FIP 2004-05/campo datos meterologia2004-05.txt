@@ -1,0 +1,20 @@
+COLUMNA	INFORMACION	UNIDADES
+1	N° CRUCERO	
+2      	LATITUD	        grados
+3	MIN LATITUD	minutos
+4	LONGITUD	grados
+5	MIN LONGUITUD	minutos
+6	ESTACIÓN
+7	AÑO	        año
+8	MES	        mes
+9	DIA	        dia
+10	HORA 	        hora
+11	MINUTO	        minutos
+12	ECOSONDA        metros 
+13	DIR OLAS        grados      
+14	ALTURA OLAS     metros
+15	DIR VIENTO	grados
+16	NUDOS VIENTO	nudos
+17	PRESION BAROMETRICA	milibar
+18	T° BULBO SECO	°C
+19	T° BULBO HÚMEDA	°C
